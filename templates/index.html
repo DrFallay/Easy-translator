@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <h2>Mini Translator</h2>
+
+  <form method="POST">
+    <textarea name="text" rows="4" cols="50" placeholder="Enter text here..."></textarea><br><br>
+
+    <label for="lang">Translate to:</label>
+    <select name="lang" id="lang">
+      <option value="EN">English</option>
+      <option value="ES">Spanish</option>
+      <option value="FR">French</option>
+      <option value="JA">Japanese</option>
+      <option value="DE">German</option>
+    </select><br><br>
+
+    <button type="submit">Translate</button>
+  </form>
+
+  {% if translated %}
+    <h3>Translation:</h3>
+    <p><strong>{{ translated }}</strong></p>
+  {% endif %}
+</body>
+</html>

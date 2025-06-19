@@ -1,0 +1,156 @@
+/* Reset defaults and set a modern font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* Body styling with a gradient background */
+body {
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Header with a fun, bold style */
+h2 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Form container with a glassmorphism effect */
+form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Textarea with smooth transitions */
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
+}
+
+/* Label and select styling */
+label {
+  font-size: 1.1rem;
+  color: #2d3436;
+  margin: 15px 0 5px;
+  display: block;
+  font-weight: 500;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
+}
+
+/* Button with a pop of color and animation */
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #e55050;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Translation output with a clean card design */
+h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-top: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #2d3436;
+}
+
+strong {
+  color: #ff6b6b;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  form, p {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  textarea, select, button {
+    font-size: 0.95rem;
+  }
+}
+
+/* Add a subtle animation for the form appearance */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+form, p {
+  animation: fadeIn 0.5s ease-in-out;
+}
