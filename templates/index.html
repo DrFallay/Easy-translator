@@ -2,30 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mini Translator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
   <h2>Mini Translator</h2>
 
   <form method="POST">
-    <textarea name="text" rows="4" cols="50" placeholder="Enter text here..."></textarea><br><br>
+    <div class="translator-grid">
+      <!-- Left: Input Box -->
+      <div class="translator-panel">
+        <label for="text">Input:</label>
+        <textarea name="text" id="text" rows="10" placeholder="Enter text here...">{{ request.form['text'] if request.form.get('text') }}</textarea>
 
-    <label for="lang">Translate to:</label>
-    <select name="lang" id="lang">
-      <option value="EN">English</option>
-      <option value="ES">Spanish</option>
-      <option value="FR">French</option>
-      <option value="JA">Japanese</option>
-      <option value="DE">German</option>
-    </select><br><br>
+        <label for="lang">Translate to:</label>
+        <select name="lang" id="lang">
+          <option value="EN">English</option>
+          <option value="ES">Spanish</option>
+          <option value="FR">French</option>
+          <option value="JA">Japanese</option>
+          <option value="DE">German</option>
+        </select>
 
-    <button type="submit">Translate</button>
+        <button type="submit">Translate</button>
+      </div>
+
+      <!-- Right: Output Box -->
+      <div class="translator-panel">
+        <label>Translation:</label>
+        <div class="output-box">
+          {% if translated %}
+            {{ translated }}
+          {% else %}
+            <span class="placeholder">Translation will appear here</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </form>
 
-  {% if translated %}
-    <h3>Translation:</h3>
-    <p><strong>{{ translated }}</strong></p>
-  {% endif %}
+  <!-- Toggle Button -->
+  <div class="toggle-container">
+    <button onclick="toggleHistory()">Toggle Translation History</button>
+  </div>
+
+  <!-- Hidden Translation History -->
+  <div id="historyBox">
+    {% if history %}
+      <h3>Translation History</h3>
+      <ul>
+        {% for item in history %}
+          <li><strong>{{ item.lang }}:</strong> "{{ item.original }}" → "{{ item.translated }}"</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No translation history yet.</p>
+    {% endif %}
+  </div>
 </body>
 </html>
